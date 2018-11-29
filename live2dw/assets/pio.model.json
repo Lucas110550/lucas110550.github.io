@@ -2,11 +2,10 @@
 	"type": "Live2D Model Setting",
     "name": "Pio",
     "model":"model.moc",
-    "textures":[,
+    "textures":[
         "textures/default-costume.png",
         "textures/pajamas-costume.png",
-        "textures/school-costume.png",
-        "textures/wizard-costume.png"
+        "textures/school-costume.png"
     ],
     "layout":{
         "center_x":0.0,
