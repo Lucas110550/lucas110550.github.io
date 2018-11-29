@@ -3,6 +3,7 @@
     "name": "Pio",
     "model":"model.moc",
     "textures":[
+        "textures/Animal Costume Racoon.png"
         "textures/default-costume.png",
         "textures/pajamas-costume.png",
         "textures/school-costume.png"
