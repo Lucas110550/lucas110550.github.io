@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Codeforces623B核心: 质因子必定是两边的数(+1, -1, 0) 不能全部取走。然后直接暴力扫维护最小值。暴力扫的时候写法很烦，边界出错导致挂了几次。 Codeforces621D取两次对数，简单分情况讨论。全部小于1的情况讨论错误，然后优先级一个地方维护错误，考场上fst.新的idea: 系统Power函数可以支持到200^200左右上限的实数模糊比较精度，但还是最好不要冒风险用这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日常记录">
+<meta property="og:url" content="http://yoursite.com/2016/02/08/2016-02-08-488961/index.html">
+<meta property="og:site_name" content="lucas110550&#39;s wonderland">
+<meta property="og:description" content="Codeforces623B核心: 质因子必定是两边的数(+1, -1, 0) 不能全部取走。然后直接暴力扫维护最小值。暴力扫的时候写法很烦，边界出错导致挂了几次。 Codeforces621D取两次对数，简单分情况讨论。全部小于1的情况讨论错误，然后优先级一个地方维护错误，考场上fst.新的idea: 系统Power函数可以支持到200^200左右上限的实数模糊比较精度，但还是最好不要冒风险用这">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-30T05:08:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="日常记录">
+<meta name="twitter:description" content="Codeforces623B核心: 质因子必定是两边的数(+1, -1, 0) 不能全部取走。然后直接暴力扫维护最小值。暴力扫的时候写法很烦，边界出错导致挂了几次。 Codeforces621D取两次对数，简单分情况讨论。全部小于1的情况讨论错误，然后优先级一个地方维护错误，考场上fst.新的idea: 系统Power函数可以支持到200^200左右上限的实数模糊比较精度，但还是最好不要冒风险用这">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/02/08/2016-02-08-488961/">
+
+
+
+
+
+  <title>日常记录 | lucas110550's wonderland</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/Lucas110550" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lucas110550's wonderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Algorithm, Mathemetics, 人生, 恋人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/cv.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>
+            
+            CV
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/08/2016-02-08-488961/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhuolin Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lucas110550's wonderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">日常记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-08T15:38:00-06:00">
+                2016-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/02/08/2016-02-08-488961/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/08/2016-02-08-488961/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Codeforces623B<br>核心: 质因子必定是两边的数(+1, -1, 0) 不能全部取走。<br>然后直接暴力扫维护最小值。<br>暴力扫的时候写法很烦，边界出错导致挂了几次。</p>
+<p>Codeforces621D<br>取两次对数，简单分情况讨论。<br>全部小于1的情况讨论错误，然后优先级一个地方维护错误，考场上fst.<br>新的idea: 系统Power函数可以支持到200^200左右上限的实数模糊比较精度，但还是最好不要冒风险用这个。</p>
+<p>Codeforces618C<br>直接二关键字排序，依次取直到找到一个非0的输出即可。<br>对极角序理解出了问题，考场上强行乱搞惨遭fst</p>
+<p>Codeforces618E<br>线段树维护坐标变换矩阵乱搞。<br>考场上完全推出了矩阵，然后用了树状数组，没出样例。<br>树状数组由于奇怪的累加机制，不能够支持矩阵这种左乘右乘不同这种情况，线段树维护懒标记可以轻松处理。<br>精度问题有点劲，全开long db会T，可以考虑部分中间过程开long db来一定提高精度。</p>
+<a id="more"></a>
+<p>Codeforces617D<br>没什么好说的题。<br>考场上赶时间直接YY情况上去，忽视了一种Case，惨遭fst</p>
+<p>Codeforces615C<br>没什么好说的题。<br>双hash非溢出很慢的，400W左右的级别就不要强用了，尤其是用map维护的情况下。<br>TLE惨遭fst</p>
+<p>Codeforces605C<br>线性组合-&gt;平面表示-&gt;凸包。<br>到某个点-&gt;到某个点的右上方(添加x,y坐标最大的两个点)</p>
+<p>Codeforces487D<br>分块。<br>路径运输问题如果是定向的(记忆化搜索样)，直接对某一维分块，维护从这个块的一端到另一端的转移。<br>询问的复杂度与修改重构的复杂度的平衡。</p>
+<p>Codeforces489F<br>Dp。<br>棋盘类问题的Dp可以写成现在在第i行，一些这一行的状态，每一行每一行整体转移。<br>f[i][j][k] 第i行，有j个1，k个0，每次一次性枚举2怎么分配，组合数转移。</p>
+<p>Codeforces528E<br>n^2求三角形面积期望。<br>面积计算公式(点坐标)(A<em>B + B </em> C + C * A)/2<br>对于三项拆开，考虑叉积的分配率，前缀和维护。</p>
+<p>Codeforces484C<br>置换后平移再置换可以看做是一个普通置换和全局shift置换的结合(当时没想到)<br>然后找找循环节就OK</p>
+<p>Codeforces30E<br>Manacher+kmp<br>kmp可以求出s[i-k+1..i]与S[1..n]匹配的最大的k，扩展kmp则是求出s[i…i+k-1]与S[1..n]匹配最大的k<br>两种最基本的应用。</p>
+<p>Codeforces482B<br>并查集删除一段数技巧，直接把l…r依次并到下一个的根上，每个数getfa之后得到的是它最右边未被删除的数。</p>
+<p>Codeforces623D<br>最优化期望问题。<br>考场上完全想偏-&gt;HNOI2013那道题… 以为求出一个大概的询问循环节，然后排序乱搞。<br>sol出乎意料，暴力模拟T轮，每次拿出一个当前贡献期望最大的出来询问。<br>每次取出最大的元素可以用堆暴力维护，询问之后简单更新一下。<br>对此仍然持有贪心正确疑问，但是感觉很对(笑</p>
+<p>Codeforces623C<br>二分技巧。<br>取的肯定是连续的一段，二分答案M。<br>连续一段O(n)check，其余的点必须投射到y轴。维护前缀和后缀y坐标极值。<br>二分的check必须小心写。</p>
+<p>Codeforces623E<br>FFT优化Dp<br>Dp的合并是卷积形式，快速幂+fft加速。<br>fft取模任意质数的方法: 因为中间结果不会超过P<em>P</em>N，取三个日常用的fft取模质数相乘大于这个结果的。<br>对于每一个质数做一次fft，每做完一次乘法CRT合并一次还原。<br>可以通过奇妙的技巧避开高精度。</p>
+<p>Codeforces622F<br>自然数幂和问题。<br>idea1: 直接拉格朗日插值法暴力即可，其间用奇妙技巧维护那个式子，复杂度O(k)。(没有及时想到的方法)<br>idea2: 问题转化为预处理伯努利数的前n项，直接多项式求逆搞。<br>UPD:由于模1e9+7，用模任意质数的方法，FFT常数乘以3，事实上，由于求逆过程中每一层实际上有两次高精度乘。</p>
+<ol>
+<li>4 prime搞</li>
+<li>3 prime 每一层合并两次。</li>
+</ol>
+<p>事实上这些方法都不用管，(因为10^6即便朴素的fft都直接T掉) idea2并不很work.<br>idea2的会光荣的TLE在第8个点，事实上k稍微小一点(5w级别.. 51nod 序列V4)，跑得稍微比idea1快一点。</p>
+<p>Codeforces626E<br>注意到中位数取两个一定比中位数一个劣。(两个缩成一个过程中，中位数变小，平均数不会变小)<br>然后贪心的原则肯定只取(n-d+1,n), (i-d+1,i)<br>二分平均数，分数规划二分出可能最大的平均数的d，check即可。<br>精度有点坑，开long double, 第一次二分60次左右可过。<br>惨遭fst</p>
+<p>Codeforces626F<br>精妙的Dp(对我来说<br>首先将所有的数排序，每一个组的不平衡值之和最小和最大值相关。<br>于是每一个组可以看做2种状态: 有了最小值没有最大值(open), 有了最小值也有最大值(close)<br>于是枚举每个人，要么随便选择前面一个open组加上去，要么新开一个open组，要么选择把前面的一个close掉。<br>精妙之处在于状态的不平衡值是最小不平衡值(即用当前枚举的这个强行封口的值)<br>这样的话f[i][j][k]表示到了第i个数，有j个open, 最小不平衡值k的方案，可以发现最后更新的一定是f[n][0][i]<br>这样的话，没有open的组，所求的不平衡值也就是精确值了。<br>转移显然。</p>
+<p>Codeforces625D<br>好想难码的数位乱搞题。<br>考虑枚举i位填几，由于对称性，可以求出n - i +1位的答案。<br>考虑到进位需要存是否进位的状态(从前往后扫的need和从后往前扫的res)<br>f[i][need][res]，到了第i位，目前需要i+1位往前进need的进位值，给n - i进了res的进位值, i扫到(n+1)/2就够了。<br>转移的时候trick是，如果n为奇数，那么(n+1)/2位所求出来的上下数的值必须一样。<br>然后考虑到可能两个数相加进位的情况，我写了两遍Dp(大体差不多，copy一下就可以。)<br>然后对于n为偶数的情况，最后只有f[(n+1)/2][1][1]和f[(n+1)/2][0][0]的答案可以被接纳(进位和需求必须相同)<br>奇数的话就[0/1][0/1]都可接纳(无关向<br>vp下写的，wa了几次finaltest(test14 2次，test26 1次)估计现场又要惨遭fst.</p>
+<p>Codeforces618F<br>鸽巢原理。<br>记录两个数组的前缀和ai, bi，对于每个ai找到一个最大的bj满足bj&lt;=ai<br>这样每个ai-bj一定都在0到n-1的范围内(需要fix的是如果an&gt;bn，那么可能有很多个ai取了bn，从而影响取值范围，导致鸽巢原理失败，交换a,b即可)<br>而一共有n个ai-bj，因此一定会存在p,q满足ai-bj=ap-bq =&gt; ai-ap=bj-bq<br>这便是答案了。<br>感觉这题事后并不是很难，但是比赛的高压下加上题序偏后，这种转化并不很常见导致现场低ac率(严肃<br>突然又想起一些序列鸽巢原理的经典题好像都是前缀和转化然后定范围(噗</p>
+<p>Codeforces620D<br>不知道自己在干什么系列。<br>简单变换一下交换两次的贡献就可以独立统计a，b了。<br>太常见的技巧，太显然的做法。<br>论脑子短路的严重危害。</p>
+<p>Codeforces620F<br>暴力艹std系列。<br>看完sol最直接的感觉就是，我对莫队算法了解实在是浅薄。<br>莫队算法是可以去掉删除(左端点右移，右端点左移)<br>方法大概就是<br>对于左端点在同一个块的询问，单独拿出来，保持右端点递增。<br>我记录左端点的max值，每次处理询问时，只把max-&gt;r的这一段添加。<br>添加的过程中维护答案，这样可以处理处max-&gt;r对max-&gt;r这一段的贡献。<br>在添加完本次询问的max-&gt;r这一段后，我暴力扫l-&gt;max这一段就可以获得l-&gt;max到max-&gt;r的贡献。<br>这上面两步的复杂度都是保持了nsqrt(n)的。<br>最后暴力处理l-&gt;max到l-&gt;max的贡献，因为每一块的询问，左端点值的偏差不会超过sqrt(n)，所以这样复杂度也是对的。<br>这样就可以处理很多因为需要消除贡献而变得棘手的询问题。<br>这道题很明显可以用trie这么搞，复杂度就是nsqrt(n)logn<br>然后<br>我被n^2的短小精悍的暴力艹成sb.</p>
+<p>Codeforces613C<br>并不难的构造题。<br>首先可以发现性质，假设有一条对称轴，那么如果出现了另一条对称轴，会在与第一条为中心对称的位置出现另一条对称轴。<br>所以这样做下去就可以发现最后的样子一定是均分的块(显然</p>
+<p>和为偶数的时候，对称轴都不会经过某个珠子，这样暴力枚举分几份就好。<br>奇数的时候，对称轴必定经过珠子，且多条对称轴经过的珠子颜色相同，枚举经过哪种颜色的珠子，再枚举分几份就好。</p>
+<p>实在是非常好想且写起来舒服的题目。<br>高压环境下的心态调整系列。</p>
+<p>Codeforces630P<br>卡傻逼题上太久没当场A掉的题。<br>没什么意思，注意可以用大圆减去空白部分。<br>剩下的就是一些正弦定理和弓形面积公式的问题了。</p>
+<p>WC 挑战NPC<br>前部分看vfk的题解搞完的。<br>后部分用了摇曳的黑科技带花树算法。<br>如果i,j有边，ran一个0到1的随机小数，a(i,j)=x, a(j,i)=-x<br>然后有很大概率这个矩阵的秩等于一般图的最大匹配。</p>
+<p>完全适用于OI骗分嘛。求秩反而没有带花树直接艹快。<br>时限一紧，都只能随机一次qwq<br>调了调seed=2333才卡时限过掉。</p>
+<p>ProjectEuler530<br>既然超过100人过了就随便写写好了。<br>第一步统计每个因子的贡献，变成sigma(gcd(d,i))的形式。<br>然后稍微变一下可以变出一个奇怪的东西，那个东西是可以n^(1/3)算出来的。<br>然后对这个求个积分，总复杂度大概是n^(2/3)，挺慢的。</p>
+<p>Codeforces629E<br>当场打的时候1个小时左右发现周围景物开始旋转，再打下去药丸<br>提前一个小时弃疗，也就没搞这题。<br>事后看起来</p>
+<p>也就一道树形Dp sb题罢了。<br>首先考虑每次询问的live地点和work地点的关系。<br>两种情况。</p>
+<ol>
+<li>live地点为work地点的祖先(先按深度swap一下)<br>很容易发现从live地点到work地点以后，折返的路线所添加的额外边的一端必须是work地点的子树内部的点(包括work地点)，另一端必须是全树节点减去live-&gt;work这一条链(包括所连的子树)节点的那些节点(画一张图就完事)</li>
+</ol>
+<p>2.非上述情况，则他们会有一个lca，这样折返的路线的两段都必须是live地点的子树节点和work地点的子树节点。</p>
+<p>因为要统计路径长度和，所以对于每个点都要Dp出其他点到它的距离和。<br>这个向下Dp一遍算出子树节点到它的距离和，再向上Dp一遍累加父亲方向上的答案即可。</p>
+<p>然后两种情况都可以减减加加算出总答案，除个总方案数算出期望就可以了。<br>感觉最近改题期手感爆表，基本写完就能1Y。</p>
+<p>Codeforces613D<br>残念题。<br>当时很明显知道是虚树，然后Dp想了很久不会转移。<br>后来还是想了很久，晚上硬着头皮乱写了一个，居然A了。<br>建出虚树后,<br>f[i][0]表示这个点没有与子树内的任何重要点相连的最小代价。<br>f[i][1]表示这个点只和子树内1个重要点相连的最小代价。<br>因为如果和子树内两个以上重要点相连，不管这个点是不是重要点，都会形成联通块。</p>
+<p>特别的，如果i点本身是重要点，那么f[i][0]即是要把i连向虚树的父亲节点(中间可能有非重要点)的那条边的某个非重要点炸掉，f[i][1]则是爆掉所有的与i相连的重要点炸掉。</p>
+<p>转移还是很复杂。<br>如果i是非重要点。</p>
+<ol>
+<li><p>f[i][0]<br>有两种转移1.我的虚树的儿子全部取f[i][0],这样的话不用炸掉i就可以。2.虚树的儿子取min(f[i][0], f[i][1]),这样的话最后炸掉i就可以了(同时防止儿子子树形成重要点的联通块)</p>
+</li>
+<li><p>f[i][1]<br>这样的话，就最多取一个儿子的f[i][1]，其他全部取f[i][0]于是先默认儿子全部取f[i][0]，然后找一个最小的f[i][1] - f[i][0]加上就可以了。</p>
+</li>
+</ol>
+<p>如果i是重要点。<br>那么其子树的所有点都不能有重要点相连(不然会形成联通块)，故全部取儿子的f[i][0]<br>然后如果是要f[i][0],那么我仍然需要付出炸掉i点与虚树上父亲的路径的某个非重要点的代价(这个可以预处理)</p>
+<p>然后balabala写了170+行，居然也1Y了(一种树形Dp很好的错觉</p>
+<p>Codeforces616F<br>拼接在一起-&gt;子串问题-&gt;后缀数组-&gt;height数组上乱搞。<br>其实转化之后就是一个裸的单调栈题。<br>写这题折腾了我挺久，犯了两个问题。<br>1.认识不清。每个极大矩形都可以被其代表元不重不漏的访问，不会因为底层而出现非最优情况。(是不重不漏枚举而不是贪心)<br>2.加的分隔符不能相同(很久没写了犯的一个巨大错误。<br>惨痛8Y</p>
+<p>Codeforces628F<br>其实没什么好说的题。<br>注意询问区间如果是前缀区间的话，其实是可以算出每一个区间的固定值的。<br>然后暴力建图最大流。</p>
+<p>Codeforces632D<br>直接埃式筛法那样把每一个数的约数出现了多少次记录下来就好。<br>然后比较约数出现次数最多的，如果相同，必定取较小的那一个(lcm对应)<br>最后更新答案就好了。</p>
+<p>Codeforces632F<br>其实a[i][j]的本质就是i到j的路径的最小值的最大值。<br>于是找出这张图的一颗最小生成树，查看每一对(i, j)的路径上的最大值是不是等于a[i][j], check一下就好。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/08/2016-02-08-488950/" rel="next" title="风格大改">
+                <i class="fa fa-chevron-left"></i> 风格大改
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/22/2018-10-22-diary-planning/" rel="prev" title="日记企划">
+                日记企划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Zhuolin Yang">
+            
+              <p class="site-author-name" itemprop="name">Zhuolin Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhuolin Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Chikasuberrrrry.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/02/08/2016-02-08-488961/';
+          this.page.identifier = '2016/02/08/2016-02-08-488961/';
+          this.page.title = '日常记录';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Chikasuberrrrry.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":345},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0tx6ekjv79m&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=1" async="async"></script>
