@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <!-- Ensure proper scaling on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><strong>Zhuolin Yang</strong> - Personal Website</title>
+  <!-- Load Open Sans font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <style>
+    /* Global Resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Open Sans", sans-serif;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Container for Two-Column Layout */
+    .container {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      gap: 20px;
+    }
+    
+    /* Left Column (Sidebar) with Darker Background */
+    .left-column {
+      flex: 0 0 300px;
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .left-column img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .left-column h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .left-column p {
+      font-size: 0.95em;
+      margin-bottom: 15px;
+      color: #555;
+    }
+    .contact a {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 0.95em;
+      color: #ffb7c5; /* a contrasting accent color */
+    }
+    
+    /* Right Column (Main Content) */
+    .right-column {
+      flex: 1;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    /* Section headings wrapped in anchor links */
+    .section h2 {
+      font-size: 1.4em;
+      border-bottom: 2px solid #555;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      color: #222;
+    }
+    .section h2 a {
+      color: inherit;
+      cursor: pointer;
+    }
+    
+    /* Item Card Style for Publications & Awards */
+    .item-card {
+      background-color: #fafafa;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .item-header h3 {
+      font-size: 1.1em;
+      color: #222;
+      margin: 0;
+      flex: 1;
+    }
+    .item-header .year {
+      font-size: 0.85em;
+      color: #777;
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+    .item-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+    
+    /* Sub-item style for Research Experiences & Scholarship */
+    .sub-item {
+      background-color: #fafafa;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .sub-item h3 {
+      font-size: 1.1em;
+      color: #222;
+      margin-bottom: 8px;
+    }
+    .sub-item p {
+      font-size: 0.9em;
+      color: #555;
+    }
+    
+    /* Toggle Button for “View all” (Now Grey) */
+    .toggle-button {
+      background-color: #777;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    .toggle-button:hover {
+      background-color: #555;
+    }
+    .inline-list li {
+	  display: block;  /* Make each list item display inline */
+	  margin-left: 13px; /* Space between items */
+	  font-size: 13px
+	}
+
+	.inline-list li:before {
+	  content: "• ";  /* Add bullet before each item */
+	  color: #000;    /* Customize bullet color if needed */
+	}
+
+    /* Responsive: Stack Columns on Narrow Screens */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .left-column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Column: Avatar + Self Description -->
+    <aside class="left-column">
+      <!-- Large Life Photo -->
+      <img src="./avat.png" alt="Zhuolin Yang">
+      <h1><strong>Zhuolin Yang</strong></h1>
+      <p>
+	  I'm currently a Research Scientist at <a href="https://research.nvidia.com/labs/adlr/" target="_blank" rel="noopener">NVIDIA ADLR Team</a>. I obtained my Ph.D. degree from <a href="https://siebelschool.illinois.edu/" target="_blank" rel="noopener">University of Illinois at Urbana-Champaign (UIUC)</a>, advised by <a href="https://aisecure.github.io/" "="" target="_blank" rel="noopener">Prof. Bo Li</a>. Previously, I received my Bachelor's degree in <a href="https://en.zhiyuan.sjtu.edu.cn/" target="_blank" rel="noopener">Shanghai Jiao Tong University, ACM Honors Class</a>.
+	  </p>
+	  <p>
+	  My research interests covers:
+		<ul class="inline-list">
+			<li>Trustworthy Machine Learning</li>
+			<li>Multi-modal LLMs and Reasoning</li>
+		</ul>
+      </p>
+	  <p>
+	  Competitive programming and math wins my favor. My Codeforces ELO is roughly the average of o3-mini-high and o3.
+	  </p>
+	  <p>
+	  I was a fan of anime and JPOP music. You may find me in some livehouses before 2019 (note for time travelers).
+      <div class="contact">
+         <a href="mailto:zhuoliny@nvidia.com" target="_blank" rel="noopener">Email</a>
+         <a href="https://github.com/Lucas110550" target="_blank">GitHub</a>
+         <a href="path/to/CV.pdf" target="_blank">CV</a>
+		 <a href="https://scholar.google.com/citations?user=BvSv-C0AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><br>
+		 <a href="https://simplespy.github.io/about/" target="_blank" rel="noopener">My Love's homepage</a>
+      </div>
+    </p></aside>
+
+    <!-- Right Column: Publications, Research, Awards, Scholarship -->
+    <main class="right-column">
+      <!-- Publications Section -->
+      <section class="section" id="publications">
+        <h2><a href="#publications">Publications</a></h2>
+        <!-- Preview List -->
+        <div class="preview">
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Nemotron-H: A Family of Accurate and Efficient Hybrid Mamba-Transformer Models [<a href="https://arxiv.org/pdf/2504.03624" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2025</span>
+            </div>
+            <p>
+              NVIDIA, <strong>Core Contributor</strong><br>
+            </p>
+          </div>
+
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning [<a href="https://arxiv.org/pdf/2503.15558" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2025</span>
+            </div>
+            <p>
+              NVIDIA, <strong>Core Contributor</strong><br>
+            </p>
+          </div>
+          
+		  <div class="item-card">
+            <div class="item-header">
+              <h3>NVLM: Open Frontier-Class Multimodal LLMs [<a href="https://arxiv.org/pdf/2409.11402" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2024</span>
+            </div>
+            <p>
+              Wenliang Dai*, Nayeon Lee*, Boxin Wang*, <strong>Zhuolin Yang*</strong>, Zihan Liu, Jon Barker, Tuomas Rintamaki, Mohammad Shoeybi, Bryan Catanzaro, Wei Ping*<br>
+            </p>
+          </div>
+
+		  <div class="item-card">
+            <div class="item-header">
+              <h3>Re-ViLM: Retrieval-Augmented Visual Language Model for Zero and Few-Shot Image Captioning [<a href="https://arxiv.org/pdf/2302.04858" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2023</span>
+            </div>
+            <p>  
+			<strong>Zhuolin Yang*</strong>, Wei Ping*, Zihan Liu, Vijay Korthikanti, Weili Nie, De-An Huang, Linxi Fan, Zhiding Yu, Shiyi Lan, Bo Li, Ming-Yu Liu, Yuke Zhu, Mohammad Shoeybi, Bryan Catanzaro, Chaowei Xiao, Anima Anandkumar<br>
+			<em>Findings of the Association for Computational Linguistics (EMNLP 2023)</em>
+            </p>
+          </div>
+
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Improving Certified Robustness via Statistical Learning with Logical Reasoning [<a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/e1b248453bca182b6138b8c14a75340d-Paper-Conference.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2022</span>
+            </div>
+            <p>
+              <strong>Zhuolin Yang*</strong>, Zhikuan Zhao*, Boxin Wang, Jiawei Zhang, Linyi Li, Hengzhi Pei, Bojan Karlaš, Ji Liu, Heng Guo, Ce Zhang, Bo Li<br>
+              <em>Advances in Neural Information Processing Systems 35 (NeurIPS 2022)</em>
+            </p>
+          </div>
+
+          <div class="item-card">
+            <div class="item-header">
+              <h3>On the Certified Robustness for Ensemble Models and Beyond [<a href="https://openreview.net/pdf?id=tUa4REjGjTf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2022</span>
+            </div>
+            <p>
+              <strong>Zhuolin Yang</strong>, Linyi Li*, Xiaojun Xu, Bhavya Kailkhura, Tao Xie, Bo Li<br>
+              <em>Proceedings of the 10th International Conference on Learning Representations (ICLR 2022)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>TRS: Transferability Reduced Ensemble via Promoting Gradient Diversity and Model Smoothness [<a href="https://proceedings.neurips.cc/paper_files/paper/2021/file/937936029af671cf479fa893db91cbdd-Paper.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2021</span>
+            </div>
+            <p>
+              <strong>Zhuolin Yang</strong>, Linyi Li*, Xiaojun Xu*, Shiliang Zuo, Qian Chen, Benjamin Rubinstein, Pan Zhou, Ce Zhang, Bo Li<br>
+			  <em>Advances in Neural Information Processing Systems 34 (NeurIPS 2021)</em>
+            </p>
+          </div>
+        </div>
+
+        <!-- Full List Hidden by Default -->
+        <div class="full-list" id="publications-full" style="display: none;">
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Interpolation for Robust Learning: Data Augmentation on Wasserstein Geodesics [<a href="https://proceedings.mlr.press/v202/zhu23i/zhu23i.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2023</span>
+            </div>
+            <p>
+			  Jiacheng Zhu, Jielin Qiu, Aritra Guha, <strong>Zhuolin Yang</strong>, Xuanlong Nguyen, Bo Li, Ding Zhao<br>
+			  <em>Proceedings of the 40th International Conference on Machine Learning (ICML 2023)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>How to Cover up Anomalous Accesses to Electronic Health Records [<a href="https://www.usenix.org/system/files/usenixsecurity23-xu-xiaojun.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2023</span>
+            </div>
+            <p>
+			  Xiaojun Xu, Qingying Hao, <strong>Zhuolin Yang</strong>, Bo Li, David Liebovitz, Gang Wang, Carl A Gunter<br>
+			  <em>32nd USENIX Security Symposium (USENIX Security 23)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>GeoECG: Data Augmentation via Wasserstein Geodesic Perturbation for Robust Electrocardiogram Prediction [<a href="https://proceedings.mlr.press/v182/zhu22a/zhu22a.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2022</span>
+            </div>
+            <p>
+			  Jiacheng Zhu, Jielin Qiu, <strong>Zhuolin Yang</strong>, Douglas Weber, Michael A Rosenberg, Emerson Liu, Bo Li, Ding Zhao<br>
+			  <em>Proceedings of the 7th Machine Learning for Healthcare Conference (MLHC 2022)</em>
+            </p>
+          </div>
+
+          <div class="item-card">
+            <div class="item-header">
+              <h3>G-PATE: Scalable Differentially Private Data Generator via Private Aggregation of Teacher Discriminators [<a href="https://proceedings.neurips.cc/paper_files/paper/2021/file/171ae1bbb81475eb96287dd78565b38b-Paper.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2021</span>
+            </div>
+            <p>
+              Yunhui Long, Boxin Wang, <strong>Zhuolin Yang</strong>, Bhavya Kailkhura, Aston Zhang, Carl Gunter, Bo Li<br>
+			  <em>Advances in Neural Information Processing Systems 34 (NeurIPS 2021)</em>
+            </p>
+          </div>
+
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Uncovering the Connections Between Adversarial Transferability and Knowledge Transferability [<a href="https://proceedings.mlr.press/v139/liang21b/liang21b.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2021</span>
+            </div>
+            <p>
+              Kaizhao Liang*, Jacky Y. Zhang*, Boxin Wang, <strong>Zhuolin Yang</strong>, Oluwasanmi Koyejo, Bo Li<br>
+			  <em>Proceedings of the 38th International Conference on Machine Learning (ICML 2021)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Understanding Robustness in Teacher-Student Setting: A New Perspective [<a href="https://proceedings.mlr.press/v130/yang21e/yang21e.pdf" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2021</span>
+            </div>
+            <p>
+              <strong>Zhuolin Yang</strong>, Zhaoxi Chen, Tiffany Cai, Xinyun Chen, Bo Li, Yuandong Tian*<br>
+			  <em>Proceedings of the 24th International Conference on Artificial Intelligence and Statistics (AISTATS 2021)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Characterizing Audio Adversarial Examples Using Temporal Dependency [<a href="https://openreview.net/pdf?id=r1g4E3C9t7" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2019</span>
+            </div>
+            <p>
+              <strong>Zhuolin Yang</strong>, Bo Li, Pin-Yu Chen, Dawn Song<br>
+              <em>Proceedings of the 7th International Conference on Learning Representations (ICLR 2019)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>GANs for Children: A Generative Data Augmentation Strategy for Children Speech Recognition [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9003933" target="_blank" rel="noopener">pdf</a>] </h3>
+              <span class="year">2019</span>
+            </div>
+            <p>
+              Peiyao Sheng, <strong>Zhuolin Yang</strong>, Yanmin Qian<br>
+			  <em>2019 IEEE Automatic Speech Recognition and Understanding Workshop (ASRU 2019)</em>
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Data Augmentation Using Conditional Generative Adversarial Networks for Robust Speech Recognition [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8706651" target="_blank" rel="noopener">pdf</a>]</h3>
+              <span class="year">2018</span>
+            </div>
+            <p>
+              Peiyao Sheng, <strong>Zhuolin Yang</strong>, Hu Hu, Tian Tan, Yanmin Qian<br>
+			  <em>Proceedings of the 11th International Symposium on Chinese Spoken Language Processing (ISCSLP 2018)</em>
+            </p>
+          </div>
+        </div>
+        <button class="toggle-button" onclick="toggleSection('publications-full', this)">View all</button>
+      </section>
+
+
+	  <!--
+      <section class="section" id="research">
+        <h2><a href="#research">Research Experiences</a></h2>
+        <div class="preview">
+          <div class="sub-item">
+            <h3>Secure Learning Lab, University of Illinois at Urbana-Champaign</h3>
+            <p><em>Research assistant advised by Prof. Bo Li</em> | Sept 2019 – Present</p>
+          </div>
+          <div class="sub-item">
+            <h3>Secure Learning Lab, University of Illinois at Urbana-Champaign</h3>
+            <p><em>Visiting research intern advised by Prof. Bo Li</em> | Sept 2018 – Dec 2018</p>
+          </div>
+        </div>
+        <div class="full-list" id="research-full" style="display: none;">
+          <div class="sub-item">
+            <h3>Berkeley Artificial Intelligence Research Lab, University of California, Berkeley</h3>
+            <p><em>Visiting research intern advised by Prof. Dawn Song</em> | July 2018 – Sept 2018</p>
+          </div>
+          <div class="sub-item">
+            <h3>Speech Lab, Shanghai Jiao Tong University</h3>
+            <p><em>Undergraduate researcher advised by Prof. Kai Yu</em> | Sept 2017 – July 2018</p>
+          </div>
+        </div>
+        <button class="toggle-button" onclick="toggleSection('research-full', this)">View all</button>
+      </section>
+	  -->
+
+      <!-- Awards Section -->
+      <section class="section" id="awards">
+        <h2><a href="#awards">Awards</a></h2>
+        <div class="preview">
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2020 ICPC World Finals Moscow, Bronze Medal (11/117) [<a href="https://cphof.org/standings/icpc/2020" target="_blank" rel="noopener">link</a>] </h3>
+              <span class="year">2021</span>
+            </div>
+            <p>
+              Team Must Pass, <strong>Zhuolin Yang</strong>, Yen-Hsiang Chang, Zihan Wang
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2020 ICPC North America Championship, Mid-West Champion (8/59)</h3>
+              <span class="year">2020</span>
+            </div>
+            <p>
+              Team Must Pass, <strong>Zhuolin Yang</strong>, Yen-Hsiang Chang, Zihan Wang
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2019 ICPC North America Mid-Central Regional Contest, Champion (1/126) [<a href="https://mcpc19.kattis.com/contests/mcpc19/standings" target="_blank" rel="noopener">link</a>] </h3>
+              <span class="year">2019</span>
+            </div>
+            <p>
+              Team Must Pass, <strong>Zhuolin Yang</strong>, Yen-Hsiang Chang, Zihan Wang
+            </p>
+          </div>
+        </div>
+        <div class="full-list" id="awards-full" style="display: none;">
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2020 ICPC North America Mid-Central Regional Contest, Runner Up (2/60) [<a href="https://mcpc20.kattis.com/contests/mcpc20/standings" target="_blank" rel="noopener">link</a>] </h3>
+              <span class="year">2020</span>
+            </div>
+            <p>
+              Team UIUC-D, <strong>Zhuolin Yang</strong>, Peiyao Sheng, Hanxuan Chen
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2020 UIUC-Michigan Terminal Virtual AI Competition, 4th Place</h3>
+              <span class="year">2020</span>
+            </div>
+            <p>
+              Team Must Pass, <strong>Zhuolin Yang</strong>, Yen-Hsiang Chang, Zihan Wang
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2020 NSA's ICPC Cyber Challenge, Runner Up (2/49) [<a href="https://nsachallenge20.kattis.com/contests/nsachallenge20/standings" target="_blank" rel="noopener">link</a>] </h3>
+              <span class="year">2020</span>
+            </div>
+            <p>
+              Team Must Pass, <strong>Zhuolin Yang</strong>, Yen-Hsiang Chang, Zihan Wang
+            </p>
+          </div>
+
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2016 ACM-ICPC Asia Yangon Regional Contest, Myanmar, 9th Place</h3>
+              <span class="year">2016</span>
+            </div>
+            <p>
+              Team Laevateinn, Yuda Fan, <strong>Zhuolin Yang</strong>, Yaoyao Ding
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2016 CCPC Hefei Regional Contest, China, Gold Medal</h3>
+              <span class="year">2016</span>
+            </div>
+            <p>
+              Team Laevateinn, Yuda Fan, <strong>Zhuolin Yang</strong>, Yaoyao Ding
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2015 ACM-ICPC Asia Singapore Regional Contest, Singapore, 8th Place</h3>
+              <span class="year">2015</span>
+            </div>
+            <p>
+              Team Hydrogenous Prominence, Zhi Qiu, <strong>Zhuolin Yang</strong>, Yifei Pu
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2015 ACM-ICPC Asia Shanghai Regional Contest, China, Gold Medal</h3>
+              <span class="year">2015</span>
+            </div>
+            <p>
+              Team Hydrogenous Prominence, Zhi Qiu, <strong>Zhuolin Yang</strong>, Yifei Pu
+            </p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>2015 CCPC-Final Contest, China, Gold Medal</h3>
+              <span class="year">2015</span>
+            </div>
+            <p>
+              Team Hydrogenous Prominence, Zhi Qiu, <strong>Zhuolin Yang</strong>, Yifei Pu
+            </p>
+          </div>
+        </div>
+        <button class="toggle-button" onclick="toggleSection('awards-full', this)">View all</button>
+      </section>
+
+      <!-- Scholarship Section -->
+      <section class="section" id="scholarship">
+        <h2><a href="#scholarship">Scholarship</a></h2>
+        <div class="preview">
+          <div class="item-card">
+            <div class="item-header">
+			  <h3>Ray Ozzie Fellowship</h3>
+			  <span class="year">2019</span>
+			</div>
+            <p>Annual Fellowship in University of Illinois at Urbana Champaign (UIUC)</p>
+          </div>
+        </div>
+        <div class="full-list" id="scholarship-full" style="display: none;">
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Eleme Scholarship</h3>
+			  <span class="year">2016</span>
+			</div>
+            <p>Top 5% students in CS department, Shanghai Jiao Tong University</p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Zhiyuan Honorary Scholarship</h3>
+			  <span class="year">2015, 2016</span>
+			</div>
+            <p>Excellent students in Zhiyuan College, Shanghai Jiao Tong University</p>
+          </div>
+          <div class="item-card">
+            <div class="item-header">
+              <h3>Academic Excellence Scholarship (2nd place)</h3>
+			  <span class="year">2016</span>
+			</div>
+            <p>Top students award in Shanghai Jiao Tong University</p>
+          </div>
+        </div>
+        <button class="toggle-button" onclick="toggleSection('scholarship-full', this)">View all</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer style="text-align: center; padding: 20px 0; border-top: 1px solid #ddd; margin-top: 40px;">
+    <p>&copy; 2025 <strong>Zhuolin Yang</strong>. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript to Toggle the "View all" Sections -->
+  <script>
+    function toggleSection(sectionId, btn) {
+      var section = document.getElementById(sectionId);
+      if (section.style.display === "none" || section.style.display === "") {
+        section.style.display = "block";
+        btn.textContent = "Hide";
+      } else {
+        section.style.display = "none";
+        btn.textContent = "View all";
+      }
+    }
+  </script>
+</body>
+</html>
+
